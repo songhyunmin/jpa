@@ -115,7 +115,8 @@ em.persist(member);
   - 비교했을 때, 변경이 있을 때, UPDATE SQL를 쓰기 지연 SQL 저장소에 저장.
   - 커밋이 되면 flush()가 호출돼서 DB에 UPDATE 쿼리가 나감.  
 ### 5) 지연 로딩 (Lazy Loading)
-  - 연관 관계 매핑되어 있는 엔티티 조회 시 프록시를 반환함으로써 쿼리를 진짜 필요할 때 날리는 기능 ?
+  - 연관 관계 매핑되어 있는 엔티티 조회 시 프록시를 반환함으로써 쿼리를 진짜 필요할 때 날리는 기능
+  - https://velog.io/@devsh/JPA-%EC%A7%80%EC%97%B0-%EB%A1%9C%EB%94%A9-%EC%A6%89%EC%8B%9C-%EB%A1%9C%EB%94%A9
 <br>
 
 ## 5. 플러쉬
