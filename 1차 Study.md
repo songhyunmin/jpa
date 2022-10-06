@@ -56,5 +56,11 @@ em.getTransaction().begin();
 
 // 객체를 저장한 상태 ( 영속 )
 em.persist(member);
-```
+``` 
+<br>
+
+## 4. 영속성 컨텍스트의 이점
+- https://ict-nroo.tistory.com/130
+
+## 5. 플러쉬
 
