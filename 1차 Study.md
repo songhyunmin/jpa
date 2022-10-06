@@ -25,9 +25,36 @@
 
 ### 3. 영속성 컨텍스트란 무엇인가?
 - JPA를 이해하는데 가장 중요한 용어.
-- 엔티티를 영구 저장하는 환경이라는 뜻.
+- 엔티티를 영구 저장하는 환경이라는 뜻. 
 - https://velog.io/@seongwon97/Spring-Boot-영속성-컨텍스트Persistence-Context
-- 비영속 : 
-- 영속 : 
-- 준영속 : 
+- 어플리케이션과 DB사이에서 객체를 보관하는 가상의 DB같은 역할을 한다
+- 서비스별로 하나의 EntityManager Factory가 존재하며 Entity Manager Factory에서 디비에 접근하는 트랜잭션이 생길 때 마다 쓰레드 별로 Entity Manager를 생성하여 영속성 컨텍스트에 접근
+- DB에 객체를 저장한다고 생각할 수 있지만, 실제로는 DB에 저장하는 것이 아니라, 영속성 컨텍스트를 통해서 엔티티를 영속화 한다는 뜻이다. 정확히 말하면 persist() 시점에는 영속성 컨텍스트에 엔티티를 저장한다. DB 저장은 이후이다.
+
+- 비영속
+  * 영속성 컨텍스트와 전혀 관계가 없는 상태
+  * 엔티티 객체를 생성하였지만 아직 영속성 컨텍스트에 저장하지 않은 상태
+- 영속
+  * 영속성 컨텍스트에 저장된 상태
+  * 엔티티가 영속성 컨텍스트에 의해 관리
+  * 영속 상태가 되었다고 바로 DB에 값이 저장되지 않고 트렌젝션의 커밋 시점에 영속성 컨텍스트에 있는 정보들을 DB에 쿼리로 날림
+  * entityManager.persist(entity);
+- 준영속
+  * 영속성 컨텍스트에 저장되었다가 분리된 상태
+  * entityManager.detach();
+- 삭제
+  * 엔티티를 영속성 컨텍스트와 데이터베이스에서 삭제
+  * entityManager.remove(entity);
+```bash
+// 객체를 생성한 상태 ( 비영속 )
+Member member = new Member();
+member.setId( "member1" );
+member.setUsername("회원 1");
+
+EntityManager em = emf.createEntityManager();
+em.getTransaction().begin();
+
+// 객체를 저장한 상태 ( 영속 )
+em.persist(member);
+```
 
