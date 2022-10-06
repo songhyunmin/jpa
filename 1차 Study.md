@@ -24,5 +24,10 @@
 <br>
 
 ### 3. 영속성 컨텍스트란 무엇인가?
-
+- JPA를 이해하는데 가장 중요한 용어.
+- 엔티티를 영구 저장하는 환경이라는 뜻.
+- https://velog.io/@seongwon97/Spring-Boot-영속성-컨텍스트Persistence-Context
+- 비영속 : 
+- 영속 : 
+- 준영속 : 
 
