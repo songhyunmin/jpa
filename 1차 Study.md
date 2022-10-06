@@ -145,8 +145,8 @@ em.persist(member);
   * 그래서 아래의 상황에서는 JPQL로 멤버들을 조회할 수 있다.
   ```bash
   em.persist(memberA);
-  em.persist(memberA);
-  em.persist(memberA);
+  em.persist(memberB);
+  em.persist(memberC);
   
   // 중간에 JPQL 실행
   query = em.createQuery("select m from Member m", Member.class);
