@@ -1,3 +1,6 @@
+[1차_Study.pptx](https://github.com/songhyunmin/jpa/files/9729743/1._Study.pptx)
+
+
 ## 1. JPA 가 나오게 된 배경
 - 애플리케이션 언어 : java, .net, c++... 객체 지향 언어
 - 데이터베이스 : MS-SQL, ORACLE, MySQL... 관계형 DB
