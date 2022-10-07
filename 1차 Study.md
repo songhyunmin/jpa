@@ -2,9 +2,57 @@
 - 애플리케이션 언어 : java, .net, c++... 객체 지향 언어
 - 데이터베이스 : MS-SQL, ORACLE, MySQL... 관계형 DB
 - 실질적으로 객체를 관계형 DB에 관리 : 언어는 객체 지향 언어이지만 관계형 DB를 관리하기 위해서는 결국 SQL을 사용해야 함.
+![image](https://user-images.githubusercontent.com/45454552/194440085-69c6e497-35ed-40b8-b6b7-eb9db9ae9f0f.png)
+
 - SQL 의존적인 개발
+- 객체와 관계형 데이터베이스의 차이
+  * 1.상속
+  * 2.연관관계 
+  * 3.데이터 타입
+  * 4.데이터 식별 방법
+  * 상속
+  ![image](https://user-images.githubusercontent.com/45454552/194441335-f246d97b-393f-40c2-be2c-36d13e2b93a2.png)
+  * 연관관계
+    - 객체는 참조 를 사용 : member.getTeam()
+    - 테이블은 외래 키 를 사용 : JOIN ON M.TEAM_ID = T.TEAM_ID
+    ![image](https://user-images.githubusercontent.com/45454552/194441436-1c175e7a-65e4-4f3c-9f94-937d37add694.png)
+  
 - 객체를 테이블에 맞추어서 모델링 -> 객체에 SQL을 통해서 관계형 DB 데이터를 객체에 저장함
+```bash
+class Member
+    String id;       //MEMBER_ID 컬럼 사용
+    Long teamId;     //TEAM_ID FK 컬럼 사용 //**
+    String username; //USERNAME 컬럼 사용
+}
+
+class Team {
+    Long id;         //TEAM_ID PK 사용 //**
+    String name;     //NAME 컬럼 사용
+}
+```
+![image](https://user-images.githubusercontent.com/45454552/194441824-610f6ae7-4619-441a-a61d-d9ee19bbb218.png)
+
+- 객체다운 모델링
+```bash
+class Member
+    String id;       //MEMBER_ID 컬럼 사용
+    Long teamId;     //TEAM_ID FK 컬럼 사용 //**
+    String username; //USERNAME 컬럼 사용
+}
+
+class Team {
+    Long id;         //TEAM_ID PK 사용 //**
+    String name;     //NAME 컬럼 사용
+}
+```
+- 객체 모델링 저장
+![image](https://user-images.githubusercontent.com/45454552/194442016-db00119d-4202-430d-ad12-aa084d2f9b77.png)
+- 객체 모델링 조회를 위해서 먼저 객체에 데이터베이스에서 조회한 데이터를 모두 입력해놔야 한다.
+- 그러나 실행하는 SQL에 따라 탐색 범위가 결정되므로 객체 안에 모든 데이터가 들어가 있다고 신뢰할 수 없다. (자유롭게 객체 그래프를 탐색할 수 없음)
 - 가져오려는 데이터가 실제로 객체에 들어가 있는지 확실치 않음 => 엔티티 신뢰 문제 발생
+ ![image](https://user-images.githubusercontent.com/45454552/194442522-36ccb1e6-d338-420b-ae34-89a9d953811a.png)
+- 그렇다고 해서 모든 객체를 미리 로딩할 수는 없다.
+ 
 - 패러다임의 불일치 : 객체 vs 관계형 데이터 베이스
 - 해결책으로 JPA 탄생
   * Java Persistence API (자바 진영의 ORM 기술 표준)
